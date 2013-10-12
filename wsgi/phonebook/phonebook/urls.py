@@ -13,14 +13,14 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     #url(r'^$', 'phonebook.views.home', name='home'),
-    url(r'^phonebook/$','fonebuk.views.contacts'),
-	url(r'^phonebook/add/$','fonebuk.views.add_contact'),
-	url(r'^phonebook/search/$','fonebuk.views.search'),
-	url(r'^phonebook/star/$','fonebuk.views.starred_contacts'),
-	url(r'^phonebook/(?P<contact_id>\d*)/$','fonebuk.views.delete_contact'),
-    url(r'^phonebook/contactsapi$','fonebuk.views.contactsapi'),
-	url(r'^phonebook/edit/(?P<contact_id>\d*)/$','fonebuk.views.edit_contact'),
-	url(r'^phonebook/fav/(?P<contact_id>\d*)/$','fonebuk.views.star_mark'),
+    url(r'^/$','fonebuk.views.contacts'),
+	url(r'^/add/$','fonebuk.views.add_contact'),
+	url(r'^/search/$','fonebuk.views.search'),
+	url(r'/star/$','fonebuk.views.starred_contacts'),
+	url(r'^/(?P<contact_id>\d*)/$','fonebuk.views.delete_contact'),
+    url(r'^/contactsapi$','fonebuk.views.contactsapi'),
+	url(r'^/edit/(?P<contact_id>\d*)/$','fonebuk.views.edit_contact'),
+	url(r'^/fav/(?P<contact_id>\d*)/$','fonebuk.views.star_mark'),
 	
 
 
