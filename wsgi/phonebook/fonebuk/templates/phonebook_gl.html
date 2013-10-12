@@ -173,7 +173,7 @@ background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz
 {% block main %}
 
 <div class="row-fluid">
-<br/>
+<br/>           
 
  {% for Contact in contacts_list reversed%}
 	<div id="contact-{{Contact.id}}" style="min-height:90px;"><strong><p class="text" style="display:inline;">Name:</strong> {{Contact.name|capfirst}} <br/>
@@ -335,7 +335,7 @@ setTimeout(function(){
 			});		
 		},
 		select: function(event, ui)  {
-			window.location = "dd/search/?term=" + ui.item.fields.name;
+			window.location = "/search/?term=" + ui.item.fields.name;
 		}
 	}).data('ui-autocomplete')._renderItem = function( ul, item ) {
 		return $( "<li>" )
