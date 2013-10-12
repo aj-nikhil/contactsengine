@@ -1,0 +1,46 @@
+
+{% extends 'phonebook.html' %}
+{% block main%}
+<style>
+button.close {
+    padding: 0px;
+    cursor: pointer;
+    background: none repeat scroll 0% 0% transparent;
+    border: 0px none;
+}
+.errorlist
+{color:#b94a48;background-color:#f2dede;border-color:#eed3d7}
+</style>
+{% block search_bar %}
+{% endblock %}
+
+<div class="row-fluid" style="margin-left:-70px;">
+<br/>
+<form method="post" enctype="multipart/form-data" action="/phonebook/edit/{{f.id}}/" class="form-horizontal">
+	{% csrf_token %}
+		{% for form in form %}
+		<div class="control-group" >
+		   <label for="name" name="{{form.name}}"class="control-label text"> {{form.name|capfirst}}
+		    {% if form.name == "name" or form.name == "phone_number" %}
+				<span style="color:red;">*</span>
+			{% endif %}	
+			</label> 
+			
+		   <div class="controls text">
+			{{ form }} 
+		   {% if form.errors %}
+			<span style="display: inline-block;">{{ form.errors }}</span>
+			{% endif %}
+		   </div>
+		</div>
+		{% endfor %}
+		<button type="submit" class="btn btn-danger offset5" >Edit Contact</button>
+		<br/><br/>
+		<span class="offset2" style="color:red;">* </span>
+		<span class="text"><strong>: Required Fields</strong></span>
+	
+</form>
+
+</div>
+
+{% endblock %}

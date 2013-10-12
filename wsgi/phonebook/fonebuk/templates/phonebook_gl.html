@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- BOOTSTRAP STYLE SHEETS -->
+<link rel="stylesheet" href="/static/2.0.3/css1/bootstrap.css">
+<link rel="stylesheet" href="/static/2.0.3/css1/bootstrap-responsive.css">
+
+<style>
+body{margin-top:40px;margin-left:200px; }
+hr{height:2px; background-color:white;}
+h1{font-family: Futura, "Trebuchet MS", Arial, sans-serif;}
+
+.verticalLine {
+    border-left: thick solid rgb(70, 131, 234);
+}
+.text{
+font-family: Cambria, Georgia, serif;color:black;}
+
+
+.messages {
+    list-style-type: none;
+    top: 50px;
+    right: 10px;
+    position: absolute;
+    z-index: 200;
+}
+
+.messages li {
+    margin: 10px 0;
+    padding: 18px 28px;
+    border: 1px solid #ccc;
+    font-size: 16px
+ }
+
+.messages li:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.alert{padding:8px 35px 8px 14px;margin-bottom:18px;color:#c09853;text-shadow:0 1px 0 rgba(255,255,255,0.5);
+background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
+.alert-heading{color:inherit}.alert .close{position:relative;top:-2px;right:-21px;line-height:18px}
+.alert-success{color:#468847;background-color:#dff0d8;border-color:#d6e9c6}
+.alert-danger,.errorlist,
+.alert-error{color:#b94a48;background-color:#f2dede;border-color:#eed3d7}
+.alert-info{color:#3a87ad;background-color:#d9edf7;border-color:#bce8f1}
+.alert-block{padding-top:14px;padding-bottom:14px}
+.alert-block>p,
+.alert-block>ul{margin-bottom:0}
+.alert-block p+p{margin-top:5px}
+
+.under{
+               color: #DD4B39;
+               background-color:white;
+               border-bottom:3px solid #DD4B39;
+			   margin-top:-2px;
+       }
+.img-responsive {
+ display: block;
+ height: auto;
+ max-width: 100%;
+}	   
+
+
+
+#gbqfb {
+    border: medium none;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    height: 30px;
+    outline: medium none;
+    padding: 0px;
+    width: 60px;
+    box-shadow: none;
+    background: -moz-linear-gradient(center top , rgb(67, 135, 253), rgb(70, 131, 234)) repeat scroll 0% 0% transparent;
+}
+.gbqfqw, #gbqfb, .gbqfwa {
+    vertical-align: top;
+}
+.gbqfb:focus, .gbqfba:focus, .gbqfbb:focus {
+    border: 1px solid rgb(77, 144, 254);
+    outline: medium none;
+    box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.5) inset;
+}
+.gbqfb {
+    border: 1px solid rgb(48, 121, 237);
+    color: rgb(255, 255, 255) !important;
+    margin: 0px;
+    background: -moz-linear-gradient(center top , rgb(77, 144, 254), rgb(71, 135, 237)) repeat scroll 0% 0% transparent;
+}
+.gbqfb, .gbqfba, .gbqfbb {
+    cursor: default !important;
+    display: inline-block;
+    font-weight: bold;
+    height: 29px;
+    line-height: 29px;
+    min-width: 54px;
+    padding: 0px 8px;
+    text-align: center;
+    text-decoration: none !important;
+    border-radius: 2px 2px 2px 2px;
+    -moz-user-select: none;
+}
+
+.gb_c {
+    background-image: url("//ssl.gstatic.com/gb/images/v1_90902864.png");
+    background-size: 271px 616px;
+}
+.gbqfi {
+    background-position: -100px -173px;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
+.gbqfb {
+    color: rgb(255, 255, 255) !important;
+}
+.gbqfb, .gbqfba, .gbqfbb {
+    cursor: default !important;
+    font-weight: bold;
+    line-height: 29px;
+    text-align: center;
+}
+#gbqf {
+    white-space: nowrap;
+}
+	  
+</style>
+<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+<!-- Pretty Photo -->
+<script src="/static/2.0.3/js/jquery.prettyPhoto.js"></script>
+<link rel="stylesheet" href="/static/2.0.3/css1/prettyPhoto.css">
+
+</head>
+
+<body>
+
+<div class="container-fluid" style="width:50%; background-image:url('/static/green_3.jpg');min-height:500px;">
+<h1 style="display:inline;font:20px;"> Contacts Engine</h1> 
+
+<span class="pull-right" style="margin-top:10px;">
+	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip"  title="Contacts Home" href="/phonebook"><i class="icon-large icon-home"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;</span>
+	<!-- <span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip" title="Search Contacts"  href="/phonebook/search"><i class="icon-large icon-search"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;</span> -->
+	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a  rel="tooltip" class="tip" title="Add Contacts" href="/phonebook/add" style="color:black;text-decoration:none;"><i class="icon-large icon-user"></i>&#43;</i></a>&nbsp;&nbsp;</span>
+	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip" title="Favourite Contacts"href="/phonebook/star"><i class="icon-large icon-star"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</span>	
+<hr/>
+
+
+<div class="alert  alert-success" style="display:none" id="success-message"></div>
+
+{% block search_bar %}
+<br/>
+<form for="autocomplete" class="form-search" action="/phonebook/search" method="GET" >
+	<div class="input-append">
+		<input  id="autocomplete"  type="text" class="span5" name="term" placeholder="Search by Name, Email or Phone Number">
+		<button type="submit" class="gbqfb"><span style="cursor:pointer;" class="gbqfi gb_c"></span></button>
+	</div>
+</form>
+{% endblock %}
+
+{% block extra %}
+{% endblock %}
+
+
+{% block main %}
+
+<div class="row-fluid">
+<br/>
+
+ {% for Contact in contacts_list reversed%}
+	<div id="contact-{{Contact.id}}" style="min-height:90px;"><strong><p class="text" style="display:inline;">Name:</strong> {{Contact.name|capfirst}} <br/>
+	<strong>Phone Number: </strong>{{Contact.phone_number}}<br/>
+	{% if Contact.email %}
+	<strong>Email: </strong>{{Contact.email}}</p>
+	{% else %}
+	<strong>Email: </strong>Not added</p>
+	{%endif %}
+	<span id="yourImage" class="pull-right" style="width: 50px; height:50px; overflow: hidden; position: relative;margin-top:-50px;">
+	{% if Contact.image %}
+		<a href="/media/{{Contact.image}}" rel="prettyPhoto" title="&nbsp;&nbsp;{{Contact.name|capfirst}}'s Profile Picture">
+		<img class="img-responsive" src="/media/{{Contact.image}}"/>
+		</a>
+	{% else %}
+        <a href="http://iranian.com/htdocs/images/no-avatar_male.jpg" rel="prettyPhoto" title="&nbsp;&nbsp;Profile Picture Not Added">
+			<img  class="img-responsive" src="http://iranian.com/htdocs/images/no-avatar_male.jpg"/>
+		</a>
+	{% endif%}	
+		
+	</span>
+	<span class="pull-right" style="margin-top:0px;">
+	
+	{% if Contact.is_starred %}
+	<a id="fav_contact-{{Contact.id}}" rel="tooltip" class="tip"  style="text-decoration:none;cursor:pointer;" title="Favourited"> <i id="gg-{{Contact.id}}" class="icon-star"></i> </a>
+	{% else %}
+	<a id="fav_contact-{{Contact.id}}" rel="tooltip" class="tip"  style="text-decoration:none;cursor:pointer;" title="Add to Favourite"> <i id="gg-{{Contact.id}}" class="icon-star-empty"></i> </a>
+	{% endif %}
+	
+	<a href="/phonebook/edit/{{Contact.id}}"  style="cursor:pointer;" rel="tooltip" class="tip" title="Edit Contact Details"><i class="icon-edit"></i></a>
+	<a rel="tooltip" data-id="{{Contact.id}}" class="delete_contact tip" style="cursor:pointer;" title="Delete Contact"><i class=" icon-remove"></i></a>
+	</span> 
+<hr/>
+
+
+
+<script>
+$(document).ready(function(){
+var id = {{Contact.id}}
+$('#fav_contact-'+id).click(function(){
+$('#gg-'+id).removeClass("icon-star-empty").addClass("icon-star");
+$.get("/phonebook/fav/"+id, function(data){
+$('#success-message').html('Contact Favourited');
+$('#success-message').show();
+setTimeout(function(){
+				$('#success-message').hide('slow');
+			}, 5000);
+});
+});
+});
+</script>
+
+</div>
+
+{% endfor %}
+
+
+<!-- AJAX FAVOURITE -->
+
+
+<!-- WARNING BEFORE DELETION, USING AJAX -->
+<script>
+$('.delete_contact').click(function(e){
+	e.preventDefault();
+	var id = $(this).data('id');
+		var result = confirm('Confirm Delete?');
+	if(result) {
+		$.get("/phonebook/" + id, function(data){
+			$('#contact-' +id).remove();
+			$('#success-message').html('Contact Successfully deleted.');
+			$('#success-message').show();
+			setTimeout(function(){
+				$('#success-message').hide('slow');
+			}, 5000);
+		});
+	}	
+
+		
+});
+</script>
+
+
+<script>
+/*
+var msg = decodeURIComponent(location.search.substring(1).split('=')[1]);
+ if(msg !==  undefined){
+ $('#success-message').html(msg);
+$('#success-message').show();
+setTimeout(function(){
+				$('#success-message').hide('slow');
+	}, 5000);
+ }
+*/
+</script>
+
+
+{% block pagination %}
+
+2
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %} 
+2
+
+<div id="examplemm" class="pagination">
+    <span class="step-links">
+        {% if contacts_list.has_previous %}
+            <a class="text" style="color:blue;"  href="?page={{ contacts_list.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current text">
+            Page {{ contacts_list.number }} of {{ contacts_list.paginator.num_pages }}. &nbsp;
+        </span>
+
+        {% if contacts_list.has_next %}
+            <a class="text" style="color:blue;" href="?page={{ contacts_list.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
+
+
+
+
+
+
+{% endblock %}
+
+
+
+</p>
+
+
+<!-- BOOTSTRAP JS -->
+<script src="/static/2.0.3/js/bootstrap.js"></script>
+<script src="/static/2.0.3/js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    $("a[rel^='prettyPhoto']").prettyPhoto();
+  });
+</script>
+
+
+
+
+<!-- AUTOCOMPLETE -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+	 $( "#autocomplete" ).autocomplete({
+		source: function(request , response) {
+			$.getJSON('/phonebook/contactsapi?term=' + request.term, function(data){
+				response(data);	
+			});		
+		},
+		select: function(event, ui)  {
+			window.location = "/phonebook/search/?term=" + ui.item.fields.name;
+		}
+	}).data('ui-autocomplete')._renderItem = function( ul, item ) {
+		return $( "<li>" )
+				.append( $( "<a>" ).text(item.fields.name + ' - ' + item.fields.phone_number + ' '+ item.fields.email) )
+				.appendTo( ul );
+		} ;
+	
+</script>
+
+ 
+<!-- TOOL TIP -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.tip').tooltip();
+    });
+</script>
+
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

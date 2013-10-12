@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+<head>
+<!-- BOOTSTRAP STYLE SHEETS -->
+<link rel="stylesheet" href="/static/2.0.3/css1/bootstrap.css">
+<link rel="stylesheet" href="/static/2.0.3/css1/bootstrap-responsive.css">
+<style>
+body{margin-top:40px;margin-left:200px; }
+hr{height:2px; background-color:white;}
+h1{font-family: Futura, "Trebuchet MS", Arial, sans-serif;}
+
+.verticalLine {
+    border-left: thick solid #0000FF;
+}
+.text{
+font-family: Cambria, Georgia, serif;color:black;}
+
+
+.messages {
+    list-style-type: none;
+    top: 50px;
+    right: 10px;
+    position: absolute;
+    z-index: 200;
+}
+
+.messages li {
+    margin: 10px 0;
+    padding: 18px 28px;
+    border: 1px solid #ccc;
+    font-size: 16px
+ }
+
+.messages li:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.alert{padding:8px 35px 8px 14px;margin-bottom:18px;color:#c09853;text-shadow:0 1px 0 rgba(255,255,255,0.5);
+background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
+.alert-heading{color:inherit}.alert .close{position:relative;top:-2px;right:-21px;line-height:18px}
+.alert-success{color:#468847;backgrounds-color:#dff0d8;border-color:#d6e9c6}
+.alert-danger,
+.alert-error{color:#b94a48;background-color:#f2dede;border-color:#eed3d7}
+.alert-info{color:#3a87ad;background-color:#d9edf7;border-color:#bce8f1}
+.alert-block{padding-top:14px;padding-bottom:14px}
+.alert-block>p,
+.alert-block>ul{margin-bottom:0}
+.alert-block p+p{margin-top:5px}
+
+.under{
+               color: #DD4B39;
+               background-color:white;
+               border-bottom:3px solid #DD4B39;
+			   margin-top:-2px;
+       }
+.img-responsive {
+ display: block;
+ height: auto;
+ max-width: 100%;
+}	   	  
+</style>
+
+<!-- BOOTSTRAP JS /JQUERY-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/static/2.0.3/js/bootstrap.min.js"></script>
+
+<!-- PRETTY PHOTO -->
+<script src="/static/2.0.3/js/jquery.prettyPhoto.js"></script>
+<link rel="stylesheet" href="/static/2.0.3/css1/prettyPhoto.css">
+
+<!-- Angular js -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<script>
+function ContactCtrl($scope, $http, $window) {
+
+	$scope.addContact = function (contact){
+		$scope.contacts.push(contact);
+	};
+	$scope.contacts =[];
+	$scope.deleteContact = function(id) {
+		var res = confirm('Do you really want to delete this contact');
+		if(res) {
+			$http( { method: 'GET', url: '/phonebook/'  +id }).success(function(data, status , headers , config) {
+				for(var x = 0; x < $scope.contacts.length; x++){
+					if($scope.contacts[x].id == id){
+						$scope.contacts.splice(x, 1);
+					}
+				}
+			});
+		}
+		
+	}
+	$scope.loadData = function() {
+		$http( { method: 'GET', url: '/phonebook/contactsapi' }).success(function(data, status , headers , config) {
+			$.each(data, function(index, value){
+				$scope.contacts.push({
+					id : value.pk,
+					name : value.fields.name,
+					email : value.fields.email,
+					image: '/media/' + value.fields.image,
+					phone: value.fields.phone_number
+				});
+			});
+			angular.element('.tip').tooltip();
+
+      	});
+					angular.element('.tip').tooltip();
+
+
+	}
+	$scope.contactFilter = function(contact) {
+		if($scope.query != null) {
+			return contact.name.toLowerCase().indexOf($scope.query.toLowerCase()) != -1
+			|| 	contact.phone.toLowerCase().indexOf($scope.query.toLowerCase()) != -1
+			|| 	contact.email.toLowerCase().indexOf($scope.query.toLowerCase()) != -1;
+		}
+		return true;
+	};
+}
+angular.module('app',[]).config(function($interpolateProvider) {
+  $interpolateProvider.startSymbol('{[{');
+  $interpolateProvider.endSymbol('}]}');
+});
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container-fluid" style="width:50%; background-image:url('/static/green_3.jpg');min-height:500px; max-height:960px;"  ng-controller="ContactCtrl" ng-init="loadData()">
+	<h1 style="display:inline;font:20px;margin-top:20px;"> Contacts Engine</h1> 
+
+	<span class="pull-right" style="margin-top:10px;">
+		<span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip"  title="Contacts Home" href="/phonebook"><i class="icon-large icon-home"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<!-- <span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip" title="Search Contacts"  href="/phonebook/search"><i class="icon-large icon-search"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;</span> -->
+		<span class="verticalLine"></span><span>&nbsp;&nbsp;<a  rel="tooltip" class="tip" title="Add Contacts" href="/phonebook/add/" style="color:black;"><i class="icon-large icon-user"></i>&#43;</i></a>&nbsp;&nbsp;</span>
+		<span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip" title="Favourite Contacts"href="/phonebook/star"><i class="icon-large icon-star"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	</span>	
+	<hr/>
+	{% block search_bar %}
+	<br/>
+	<form for="autocomplete" class="form-search" action="/phonebook/search" method="GET" >
+		<div class="input-append">
+			<input   ng-model="query" type="text" class="span5" placeholder="Search by Name, Email or Phone Number">
+		</div>
+	</form>
+	{% endblock %} 
+	
+	{% block main %}
+	<div class="row-fluid"  >
+	<br/>
+		<div ng-repeat ="contact in contacts  | filter:contactFilter" >
+			<div >
+				<p class="text" style="display:inline;">
+					<strong>Name:</strong> {[{contact.name}]} <br/>
+					<strong>Phone Number: </strong>{[{contact.phone}]}<br/>
+					<strong>Email: </strong>{[{contact.email}]}</p>
+					<span id="yourImage" class="pull-right" style="width: 50px; height:50px; overflow: hidden; position: relative;margin-top:-50px;">
+						<a href="{[{contact.image}]}" rel="prettyphoto"><img  class="img-responsive" ng-src="{[{contact.image}]}" style="position: absolute;" /></a>
+					</span>
+					<span class="pull-right" style="margin-top:0px;">
+						<a href="#" rel="tooltip" class="tip"  title="Mark as Favourite"> <i class=" icon-star-empty"></i> </a>
+						<a href="#"  rel="tooltip" class="tip" title="Edit Contact Details"><i class="icon-edit"></i></a>
+						<a rel="tooltip"   ng-click="deleteContact(contact.id)" style="cursor:pointer;" class="delete_contact tip" title="Delete Contact"><i class=" icon-remove"></i></a>
+					</span> 
+				<div id="example" style="text-align:center;" class="offset2"></div>
+			</div>
+			<hr/>
+
+		</div>
+	</div>
+	{% endblock %}
+</div>
+</body>
+</html>

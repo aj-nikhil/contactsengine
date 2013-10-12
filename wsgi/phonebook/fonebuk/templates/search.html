@@ -1,0 +1,18 @@
+{% extends 'phonebook_gl.html' %}
+
+{% block extra %}
+
+{% if query %}
+<p class="text"> You Searched for {{query|capfirst}}</p>
+
+{% endif %}
+
+{% endblock %}
+
+{% block pagination %}
+{% endblock%}
+
+
+
+
+
