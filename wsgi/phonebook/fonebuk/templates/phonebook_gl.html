@@ -146,10 +146,10 @@ background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz
 <h1 style="display:inline;font:20px;"> Contacts Engine</h1> 
 
 <span class="pull-right" style="margin-top:10px;">
-	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip"  title="Contacts Home" href="/phonebook"><i class="icon-large icon-home"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;</span>
+	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip"  title="Contacts Home" href="/"><i class="icon-large icon-home"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;</span>
 	<!-- <span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip" title="Search Contacts"  href="/phonebook/search"><i class="icon-large icon-search"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;</span> -->
-	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a  rel="tooltip" class="tip" title="Add Contacts" href="/phonebook/add" style="color:black;text-decoration:none;"><i class="icon-large icon-user"></i>&#43;</i></a>&nbsp;&nbsp;</span>
-	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip" title="Favourite Contacts"href="/phonebook/star"><i class="icon-large icon-star"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a  rel="tooltip" class="tip" title="Add Contacts" href="/add" style="color:black;text-decoration:none;"><i class="icon-large icon-user"></i>&#43;</i></a>&nbsp;&nbsp;</span>
+	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip" title="Favourite Contacts"href="/star"><i class="icon-large icon-star"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 </span>	
 <hr/>
 
@@ -335,7 +335,7 @@ setTimeout(function(){
 			});		
 		},
 		select: function(event, ui)  {
-			window.location = "/search/?term=" + ui.item.fields.name;
+			window.location = "dd/search/?term=" + ui.item.fields.name;
 		}
 	}).data('ui-autocomplete')._renderItem = function( ul, item ) {
 		return $( "<li>" )

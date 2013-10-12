@@ -44,7 +44,7 @@ def add_contact(request):
             contact.save()
             form.save_m2m()
             messages.success(request, 'New Contact added.')
-            return HttpResponseRedirect('/phonebook/')
+            return HttpResponseRedirect('/')
         else:
             messages.error(request, 'Form did not pass validation!')
     else:
@@ -101,7 +101,7 @@ def edit_contact(request, contact_id=None):
         form = ContactForm(request.POST, request.FILES, instance=f)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/phonebook/')
+            return HttpResponseRedirect('/')
     else:
         form = ContactForm( instance = f )
     context = {
