@@ -158,7 +158,7 @@ background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz
 
 {% block search_bar %}
 <br/>
-<form for="autocomplete" class="form-search" action="/phonebook/search" method="GET" >
+<form for="autocomplete" class="form-search" action="/search" method="GET" >
 	<div class="input-append">
 		<input  id="autocomplete"  type="text" class="span5" name="term" placeholder="Search by Name, Email or Phone Number">
 		<button type="submit" class="gbqfb"><span style="cursor:pointer;" class="gbqfi gb_c"></span></button>
@@ -203,7 +203,7 @@ background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz
 	<a id="fav_contact-{{Contact.id}}" rel="tooltip" class="tip"  style="text-decoration:none;cursor:pointer;" title="Add to Favourite"> <i id="gg-{{Contact.id}}" class="icon-star-empty"></i> </a>
 	{% endif %}
 	
-	<a href="/phonebook/edit/{{Contact.id}}"  style="cursor:pointer;" rel="tooltip" class="tip" title="Edit Contact Details"><i class="icon-edit"></i></a>
+	<a href="/edit/{{Contact.id}}"  style="cursor:pointer;" rel="tooltip" class="tip" title="Edit Contact Details"><i class="icon-edit"></i></a>
 	<a rel="tooltip" data-id="{{Contact.id}}" class="delete_contact tip" style="cursor:pointer;" title="Delete Contact"><i class=" icon-remove"></i></a>
 	</span> 
 <hr/>
@@ -215,7 +215,7 @@ $(document).ready(function(){
 var id = {{Contact.id}}
 $('#fav_contact-'+id).click(function(){
 $('#gg-'+id).removeClass("icon-star-empty").addClass("icon-star");
-$.get("/phonebook/fav/"+id, function(data){
+$.get("/fav/"+id, function(data){
 $('#success-message').html('Contact Favourited');
 $('#success-message').show();
 setTimeout(function(){
@@ -241,7 +241,7 @@ $('.delete_contact').click(function(e){
 	var id = $(this).data('id');
 		var result = confirm('Confirm Delete?');
 	if(result) {
-		$.get("/phonebook/" + id, function(data){
+		$.get("/" + id, function(data){
 			$('#contact-' +id).remove();
 			$('#success-message').html('Contact Successfully deleted.');
 			$('#success-message').show();
@@ -330,12 +330,12 @@ setTimeout(function(){
 <script>
 	 $( "#autocomplete" ).autocomplete({
 		source: function(request , response) {
-			$.getJSON('/phonebook/contactsapi?term=' + request.term, function(data){
+			$.getJSON('/contactsapi?term=' + request.term, function(data){
 				response(data);	
 			});		
 		},
 		select: function(event, ui)  {
-			window.location = "/phonebook/search/?term=" + ui.item.fields.name;
+			window.location = "/search/?term=" + ui.item.fields.name;
 		}
 	}).data('ui-autocomplete')._renderItem = function( ul, item ) {
 		return $( "<li>" )

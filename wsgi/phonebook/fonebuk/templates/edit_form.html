@@ -16,7 +16,7 @@ button.close {
 
 <div class="row-fluid" style="margin-left:-70px;">
 <br/>
-<form method="post" enctype="multipart/form-data" action="/phonebook/edit/{{f.id}}/" class="form-horizontal">
+<form method="post" enctype="multipart/form-data" action="/edit/{{f.id}}/" class="form-horizontal">
 	{% csrf_token %}
 		{% for form in form %}
 		<div class="control-group" >
