@@ -17,42 +17,6 @@ h1{font-family: Futura, "Trebuchet MS", Arial, sans-serif;}
 .text{
 font-family: Cambria, Georgia, serif;color:black;}
 
-
-.messages {
-    list-style-type: none;
-    top: 50px;
-    right: 10px;
-    position: absolute;
-    z-index: 200;
-}
-
-.messages li {
-    margin: 10px 0;
-    padding: 18px 28px;
-    border: 1px solid #ccc;
-    font-size: 16px
- }
-
-.messages li:hover {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1);
-    cursor: pointer;
-}
-.alert{padding:8px 35px 8px 14px;margin-bottom:18px;color:#c09853;text-shadow:0 1px 0 rgba(255,255,255,0.5);
-background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
-.alert-heading{color:inherit}.alert .close{position:relative;top:-2px;right:-21px;line-height:18px}
-.alert-success{color:#468847;background-color:#dff0d8;border-color:#d6e9c6}
-.alert-danger,.errorlist,
-.alert-error{color:#b94a48;background-color:#f2dede;border-color:#eed3d7}
-.alert-info{color:#3a87ad;background-color:#d9edf7;border-color:#bce8f1}
-.alert-block{padding-top:14px;padding-bottom:14px}
-.alert-block>p,
-.alert-block>ul{margin-bottom:0}
-.alert-block p+p{margin-top:5px}
-
 .under{
                color: #DD4B39;
                background-color:white;
@@ -64,70 +28,6 @@ background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz
  height: auto;
  max-width: 100%;
 }	   
-
-
-
-#gbqfb {
-    border: medium none;
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
-    height: 30px;
-    outline: medium none;
-    padding: 0px;
-    width: 60px;
-    box-shadow: none;
-    background: -moz-linear-gradient(center top , rgb(67, 135, 253), rgb(70, 131, 234)) repeat scroll 0% 0% transparent;
-}
-.gbqfqw, #gbqfb, .gbqfwa {
-    vertical-align: top;
-}
-.gbqfb:focus, .gbqfba:focus, .gbqfbb:focus {
-    border: 1px solid rgb(77, 144, 254);
-    outline: medium none;
-    box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.5) inset;
-}
-.gbqfb {
-    border: 1px solid rgb(48, 121, 237);
-    color: rgb(255, 255, 255) !important;
-    margin: 0px;
-    background: -moz-linear-gradient(center top , rgb(77, 144, 254), rgb(71, 135, 237)) repeat scroll 0% 0% transparent;
-}
-.gbqfb, .gbqfba, .gbqfbb {
-    cursor: default !important;
-    display: inline-block;
-    font-weight: bold;
-    height: 29px;
-    line-height: 29px;
-    min-width: 54px;
-    padding: 0px 8px;
-    text-align: center;
-    text-decoration: none !important;
-    border-radius: 2px 2px 2px 2px;
-    -moz-user-select: none;
-}
-
-.gb_c {
-    background-image: url("//ssl.gstatic.com/gb/images/v1_90902864.png");
-    background-size: 271px 616px;
-}
-.gbqfi {
-    background-position: -100px -173px;
-    display: inline-block;
-    height: 30px;
-    width: 30px;
-}
-.gbqfb {
-    color: rgb(255, 255, 255) !important;
-}
-.gbqfb, .gbqfba, .gbqfbb {
-    cursor: default !important;
-    font-weight: bold;
-    line-height: 29px;
-    text-align: center;
-}
-#gbqf {
-    white-space: nowrap;
-}
 	  
 </style>
 <!-- jQuery -->
@@ -140,6 +40,9 @@ background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz
 
 </head>
 
+
+
+
 <body>
 
 <div class="container-fluid" style="width:50%; background-image:url('/static/green_3.jpg');min-height:500px;">
@@ -149,7 +52,9 @@ background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz
 	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip"  title="Contacts Home" href="/"><i class="icon-large icon-home"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;</span>
 	<!-- <span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip" title="Search Contacts"  href="/phonebook/search"><i class="icon-large icon-search"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;</span> -->
 	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a  rel="tooltip" class="tip" title="Add Contacts" href="/add" style="color:black;text-decoration:none;"><i class="icon-large icon-user"></i>&#43;</i></a>&nbsp;&nbsp;</span>
-	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip" title="Favourite Contacts"href="/star"><i class="icon-large icon-star"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	<span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip" title="Favourite Contacts"href="/star"><i class="icon-large icon-star"></i></a>&nbsp;&nbsp;&nbsp;</span>
+
+    <span class="verticalLine"></span><span>&nbsp;&nbsp;<a rel="tooltip" class="tip" title="About Contact Engine"><i onClick="$('#myModal').modal()" data-toggle="modal" class="icon-large icon-star"></i></a>&nbsp;&nbsp;</span>
 </span>	
 <hr/>
 
@@ -161,10 +66,11 @@ background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz
 <form for="autocomplete" class="form-search" action="/search" method="GET" >
 	<div class="input-append">
 		<input  id="autocomplete"  type="text" class="span5" name="term" placeholder="Search by Name, Email or Phone Number">
-		<button type="submit" class="gbqfb btn btn-primary"><span style="cursor:pointer;" class="gbqfi gb_c"></span></button>
+		<button type="submit" class="btn btn-primary"><span style="cursor:pointer;" class="gbqfi gb_c">Search</span></button>
 	</div>
 </form>
 {% endblock %}
+
 
 {% block extra %}
 {% endblock %}
@@ -231,7 +137,27 @@ setTimeout(function(){
 
 {% endfor %}
 
+ <!--MODAL -->   
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h3 id="myModalLabel">Contacts Engine (v1.0)</h3>
+</div>
+<div class="modal-body">
+<p class="text">A simple application to manage your contacts. You can add new contacts, edit existing contacts, add contacts to favourite groups and search contacts by name, 
+    phone number or email address.</p>
+<p class="text">
+    Built using python webframework Django for server side and Twitter's Bootstrap, jQuery for UI; Contacts Engine has a responsive design with very fast processing. Currently app is hosted on Openshift's RhCloud servers. 
+ </p>   
+   <p class="text"> 
+    Please email me any bugs and other feedbacks nikhil [at] plovist [dot]com.
 
+</p>
+</div>
+<div class="modal-footer">
+<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
+</div>
 
 
 
@@ -301,19 +227,13 @@ setTimeout(function(){
 {% endblock %}
 
 
-
-
-
-
 {% endblock %}
-
 
 
 </p>
 
 
 <!-- BOOTSTRAP JS -->
-<script src="/static/2.0.3/js/bootstrap.js"></script>
 <script src="/static/2.0.3/js/bootstrap.min.js"></script>
 
 <script>
@@ -321,8 +241,6 @@ setTimeout(function(){
     $("a[rel^='prettyPhoto']").prettyPhoto();
   });
 </script>
-
-
 
 
 <!-- AUTOCOMPLETE -->
@@ -353,9 +271,6 @@ setTimeout(function(){
         $('.tip').tooltip();
     });
 </script>
-
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-
 
 </body>
 </html>
